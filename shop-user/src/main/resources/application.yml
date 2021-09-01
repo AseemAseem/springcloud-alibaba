@@ -1,5 +1,6 @@
 server:
   port: 8071
+#是否开启 swagger-ui
 spring:
   application:
     name: service-user
@@ -11,7 +12,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql:///shop?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&userSSL=true
     username: root
-    password: root
+    password: 123456
   jpa:
     properties:
       hibernate:
