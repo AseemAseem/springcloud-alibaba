@@ -1,4 +1,4 @@
-package com.example.util.jpush;
+package com.example.push;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -8,16 +8,16 @@ import java.util.Map;
 
 @Data
 public class MsgModel {
-    @ApiModelProperty("消息id，非必须，防重复发送")
+    @ApiModelProperty("消息id，防重复发送")
     private String cid;
 
-    @ApiModelProperty("推送设备，默认全部")
-    private List<Patform> patform;
+    @ApiModelProperty("推送平台，默认全部")
+    private List<Platform> platforms;
 
     @ApiModelProperty(value = "推送范围")
     private Audience audience;
 
-    @ApiModelProperty("消息内容")
+    @ApiModelProperty(value = "消息内容", required = true)
     private Notification notification;
 
     @ApiModelProperty("应用内消息。或者称作：自定义消息，透传消息")
@@ -27,7 +27,7 @@ public class MsgModel {
     private Options options;
 
     @Data
-    private class Audience {
+    public class Audience {
         @ApiModelProperty("包含的标签")
         private String[] tag;
 
@@ -39,10 +39,13 @@ public class MsgModel {
 
         @ApiModelProperty("设备标识id，非必须")
         private String[] registration_id;
+
+        @ApiModelProperty("设备别名，非必须")
+        private String[] alias;
     }
 
     @Data
-    private class Notification {
+    public class Notification {
         @ApiModelProperty("标题")
         private String title;
 
@@ -55,7 +58,7 @@ public class MsgModel {
 
     // 应用内消息。或者称作：自定义消息，透传消息
     @Data
-    private class Message {
+    public class Message {
         private String title;
         private String content;
         // 消息内容类型
@@ -66,7 +69,7 @@ public class MsgModel {
 
     // 可选参数
     @Data
-    private class Options {
+    public class Options {
         // 用户离线时，消息保留时长，默认10天
         private Integer time_to_live = 10 * 86400;
         // iOS是否生产环境，仅对ios生效
@@ -75,10 +78,10 @@ public class MsgModel {
         private String apns_collapse_id;
     }
 
-    // 推送设备类型，默认全部
-    public enum Patform {
-        ANDROID,
-        IOS,
-        QUICK_APP;
+    // 推送平台，默认全部
+    public enum Platform {
+        android,
+        ios,
+        quickapp;
     }
 }

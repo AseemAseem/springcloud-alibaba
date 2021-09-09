@@ -1,0 +1,20 @@
+server:
+  port: 7000
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 让gateway可以发现nacos中的服务
+      routes: # 路由数组
+        - id: product_route # 当前的标识，要求唯一
+          uri: lb://service-product # lb指从nacos中按名称获取微服务，并遵循负载均衡策略
+          predicates: # 断言，路由转发需要满足的条件
+            - Path=/product-serv/** # 请求路径满足Path指定规则时，才转发
+          filters: # 过滤器，请求传递中可以用过滤器进行一定修改
+            - StripPrefix=1 # 转发前去掉一层路径

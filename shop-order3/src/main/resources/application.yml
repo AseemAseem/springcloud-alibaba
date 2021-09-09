@@ -7,6 +7,11 @@ spring:
       nacos:
         discovery:
           server-addr: 127.0.0.1:8848
+      sentinel: # sentinel配置
+        eager: true # 取消监控微服务的懒加载
+        transport:
+          port: 99991 # 与控制台交流的端口，估计是开个协议端口交流用。随便一个地址即可
+          dashboard: localhost:8080 # 控制台服务的地址
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql:///shop?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&userSSL=true

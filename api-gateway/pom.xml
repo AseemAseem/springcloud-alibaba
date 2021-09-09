@@ -9,19 +9,20 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>shop-product</artifactId>
+    <artifactId>api-gateway</artifactId>
 
     <dependencies>
-        <!--springboot-web-->
+        <!-- 注意！此模块不能引入starter-web -->
+        <!-- spring cloud gateway -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
-        <!--shop-common-->
+        <!-- nacos客户端 -->
         <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>shop-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
     </dependencies>
+
 </project>

@@ -19,3 +19,10 @@ spring:
         hbm2ddl:
           auto: update
         dialect: org.hibernate.dialect.MySQL8Dialect
+# 推送
+push:
+  # 当前推送方式
+  active: jpush
+  jpush:
+    appKey: dccda52cf9b3e574ee5beb13
+    masterSecret: 1e69202b4db58124b00ad42c
