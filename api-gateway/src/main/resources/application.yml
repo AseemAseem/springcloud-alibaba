@@ -18,3 +18,4 @@ spring:
             - Path=/product-serv/** # 请求路径满足Path指定规则时，才转发
           filters: # 过滤器，请求传递中可以用过滤器进行一定修改
             - StripPrefix=1 # 转发前去掉一层路径
+            - Log=true,false
